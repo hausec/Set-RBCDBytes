@@ -1,11 +1,11 @@
 ﻿function Set-RBCDBytes {
 <# 
 .SYNOPSIS
-    Sets the msds-allowedtoactonbehalfofotheridentity property on a computer object to allow RBCD.
-    Author: @Haus3c
+	Sets the msds-allowedtoactonbehalfofotheridentity property on a computer object to allow RBCD.
+	Author: @Haus3c
 	
 .PARAMETER 
-    -Domain 
+	-Domain 
 	The principal's domain
 	
 	-TargetComputer
@@ -15,8 +15,8 @@
 	The principal (user or computer) that has an SPN set that will be added to the property and be allowed to delegate using RBCD.
 	
 .EXAMPLE 
-    Set-RBCDBytes -Domain LAB.LOCAL -TargetComputer LABWIN10 -Principal 'LABWIN10$'
-    Set-RBCDBytes -Domain LAB.LOCAL -TargetComputer LABWIN10 -Principal Bob
+	Set-RBCDBytes -Domain LAB.LOCAL -TargetComputer LABWIN10 -Principal 'LABWIN10$'
+	Set-RBCDBytes -Domain LAB.LOCAL -TargetComputer LABWIN10 -Principal Bob
 #>
     [CmdletBinding()]
     Param(
